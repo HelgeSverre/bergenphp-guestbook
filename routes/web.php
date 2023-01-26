@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,9 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [\App\Http\Controllers\PostController::class, "index"])->name("posts.index");
-Route::get('/opprett', [\App\Http\Controllers\PostController::class, "create"])->name("posts.create");
-Route::post('/opprett', [\App\Http\Controllers\PostController::class, "store"])->name("posts.store");
-Route::get('/{post}', [\App\Http\Controllers\PostController::class, "show"])->name("posts.show");
-Route::delete('/{post}', [\App\Http\Controllers\PostController::class, "destroy"])->name("posts.destroy");
-
+Route::get('/', [PostController::class, "index"])->name("posts.index");
+Route::get('/opprett', [PostController::class, "create"])->name("posts.create");
+Route::post('/opprett', [PostController::class, "store"])->name("posts.store");
+Route::get('/{post}', [PostController::class, "show"])->name("posts.show");
+Route::delete('/{post}', [PostController::class, "destroy"])->name("posts.destroy");
