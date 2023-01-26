@@ -16,4 +16,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [\App\Http\Controllers\PostController::class, "index"])->name("posts.index");
 Route::get('/opprett', [\App\Http\Controllers\PostController::class, "create"])->name("posts.create");
 Route::post('/opprett', [\App\Http\Controllers\PostController::class, "store"])->name("posts.store");
+Route::get('/{post}', [\App\Http\Controllers\PostController::class, "show"])->name("posts.show");
+Route::delete('/{post}', [\App\Http\Controllers\PostController::class, "destroy"])->name("posts.destroy");
 

@@ -30,17 +30,7 @@
 
 
         @foreach($posts as $post)
-
-            <div class="bg-white p-4 border border-gray-100 rounded-md shadow-md">
-                <div class="flex justify-between items-center">
-                    <h2 class="text-base font-medium text-gray-900">{{ $post->name }}</h2>
-                    <span class="text-sm text-gray-500">{{ $post->created_at->format("d.m.Y H:i") }}</span>
-                </div>
-
-                <div class="mt-2">
-                    <p class="text-gray-700 text-sm">{{ $post->text }}</p>
-                </div>
-            </div>
+            @include("posts.partials.post",["post" => $post])
         @endforeach
 
 
