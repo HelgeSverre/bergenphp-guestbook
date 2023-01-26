@@ -12,7 +12,7 @@ class PostController extends Controller
         $sort = $request->input("sort", "desc");
 
         return view("posts.index", [
-            "posts" => Post::query()->orderBy("created_at", $sort)->get(),
+            "posts" => Post::query()->orderBy("created_at", $sort)->simplePaginate(5),
             "sort" => $sort,
         ]);
     }
