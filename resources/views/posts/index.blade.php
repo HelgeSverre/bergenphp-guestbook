@@ -1,8 +1,7 @@
 @extends("layout")
 
 @section("content")
-
-    <header class="mb-8 ">
+    <header class="mb-8">
         <h1 class="text-3xl font-bold">Gjesteboken!</h1>
         <p class="mt-2 text-lg">Hei og velkommen til min hjemmeside, legg gjerne igjen en kommentar i gjesteboken!</p>
 
@@ -14,10 +13,8 @@
     </header>
 
     <section class="space-y-4">
-
         <header>
             <div class="flex justify-between items-end">
-
                 <h1 class="text-3xl font-bold">Innlegg</h1>
                 <div>
                     <div class="text-sm text-red-500 underline">
@@ -43,15 +40,12 @@
             </div>
         </header>
 
-
         @foreach($posts as $post)
             @include("posts.partials.post",["post" => $post])
         @endforeach
-
 
         <div>
             {{ $posts->links() }}
         </div>
     </section>
-
 @endsection
