@@ -15,16 +15,31 @@
 
     <section class="space-y-4">
 
-        <header class="flex justify-between items-end">
-            <h1 class="text-3xl font-bold">Innlegg</h1>
-            <div>
-                <div class="text-sm text-red-500 underline">
-                    @if($sort === "desc")
-                        <a href="{{ route("posts.index",["sort" => "asc"]) }}">Eldste først</a>
-                    @else
-                        <a href="{{ route("posts.index",["sort" => "desc"]) }}">Nyeste først</a>
-                    @endif
+        <header>
+            <div class="flex justify-between items-end">
+
+                <h1 class="text-3xl font-bold">Innlegg</h1>
+                <div>
+                    <div class="text-sm text-red-500 underline">
+                        @if($sort === "desc")
+                            <a href="{{ route("posts.index",["sort" => "asc"]) }}">Eldste først</a>
+                        @else
+                            <a href="{{ route("posts.index",["sort" => "desc"]) }}">Nyeste først</a>
+                        @endif
+                    </div>
                 </div>
+            </div>
+
+            <div class="mt-2">
+                <form action="{{ route('posts.index') }}" method="get">
+                    <input
+                        type="search"
+                        name="search"
+                        class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                        placeholder="Søk"
+                        value="{{ request("search") }}"
+                    >
+                </form>
             </div>
         </header>
 

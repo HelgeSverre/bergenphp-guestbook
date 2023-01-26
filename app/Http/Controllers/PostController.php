@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -10,9 +11,15 @@ class PostController extends Controller
     public function index(Request $request)
     {
         $sort = $request->input("sort", "desc");
+        $search = $request->input("search");
+
+        $posts = Post::query()
+            ->orderBy("created_at", $sort)
+            ->when($search, fn (Builder $q, $keyword) => $q->where("name", "like", "%$keyword%"))
+            ->simplePaginate(5);
 
         return view("posts.index", [
-            "posts" => Post::query()->orderBy("created_at", $sort)->simplePaginate(5),
+            "posts" => $posts,
             "sort" => $sort,
         ]);
     }
